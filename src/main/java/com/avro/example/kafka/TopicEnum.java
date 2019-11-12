@@ -9,7 +9,8 @@ import org.apache.avro.specific.SpecificRecordBase;
 import java.util.EnumSet;
 
 public enum TopicEnum {
-    USER("user-info-topic", new User());
+    USER("user-info-topic", new User()),
+    STOCK("stock-info-topic", new Stock());
 
     public final String topicName;
     public final SpecificRecordBase topicType;
@@ -24,5 +25,13 @@ public enum TopicEnum {
                 .filter(topic -> topic.topicName.equals(topicName))
                 .findFirst()
                 .orElse(null);
+    }
+
+    public String getTopicName() {
+        return topicName;
+    }
+
+    public SpecificRecordBase getTopicType() {
+        return topicType;
     }
 }
